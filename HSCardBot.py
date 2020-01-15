@@ -4,10 +4,7 @@ import requests
 import os
 
 
-def gettoken():
-    clientid = '1f01b88fc4824d2281fc3575882a2b12'
-    secret = 'ZZmc5mkvKhydoNZ5VOhT1GWqxs7sGVI3'
-
+def gettoken(clientid,secret):
     os.system('curl -u ' + clientid +':'+secret+' -d grant_type=client_credentials https://us.battle.net/oauth/token > out.txt')
     with open("out.txt","r") as f:
         txt = f.readline()
@@ -46,7 +43,7 @@ def get_url(token, id):
    
 
 def card(bot, update, args):
-    token = gettoken()
+    blizztoken = gettoken()
     chat_id = update.message.chat_id
     id = fetchid(args)
     url = get_url(token,id)
@@ -55,7 +52,7 @@ def card(bot, update, args):
 
 
 def main():
-    updater = Updater("969964976:AAFV-HvFbtlw-NJLJObaUyVyG_Dk6Q8O4ME")
+    updater = Updater(token)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("card", card, pass_args=True))
@@ -64,5 +61,5 @@ def main():
     updater.idle()
 
 
-if __name__ == '__main__':
-    main()
+def __init__(self,token):
+    main(token)
