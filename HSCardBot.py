@@ -26,8 +26,8 @@ def gettoken():
 def start(bot, update):
     chat_id = update.message.chat_id
     bot.send_message(chat_id,
-                     "I'm a bot made for displaying Hearthstone cards. Type /card the-name-of-the-card to see the "
-                     "card you're looking for")
+                     "I'm a bot made for displaying Hearthstone cards. Type /card Card Name to see the "
+                     "card you're looking for. (The /card command is case insensitive)")
 
 
 def fetchid(args):
